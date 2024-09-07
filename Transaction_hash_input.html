@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Transaction Tracker</title>
+    <style>
+        body {
+            background-color: #fcb8d8; /* Light pink background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #c71585; /* Darker pink color */
+            margin-top: 20px;
+        }
+        #transactionForm {
+            background-color: #ffffff; /* White background for form */
+            display: inline-block;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 300px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #c71585; /* Button color matching the heading */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #a32a6f; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Identify the End Receiver of a Transaction</h1>
+    <form id="transactionForm">
+        <label for="txHash">Enter Transaction Hash:</label><br>
+        <input type="text" id="txHash" name="txHash" required><br><br>
+        <button type="button" onclick="redirectToExplorer()">Track Transaction</button>
+    </form>
+
+    <script>
+        function redirectToExplorer() {
+            const txHash = document.getElementById("txHash").value.trim();
+            if (txHash) {
+                // Redirect to Sepolia explorer with the transaction hash
+                const explorerUrl = `https://sepolia.etherscan.io/tx/${txHash}`;
+                window.location.href = explorerUrl;
+            } else {
+                alert("Please enter a valid transaction hash.");
+            }
+        }
+    </script>
+</body>
+</html>
